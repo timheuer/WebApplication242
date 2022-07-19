@@ -45,13 +45,10 @@ jobs:
       with:
         dotnet-version: 7.0.x
         include-prerelease: true
-
+        
     - name: Setup auth feed
       run: dotnet nuget add source https://nuget.telerik.com/nuget -n Telerik -u ${{ secrets.AUTH_FEED_USER }} -p ${{ secrets.AUTH_FEED_PWD }} --store-password-in-clear-text
       
-    - name: Restore
-      run: dotnet restore
-
     - name: Restore
       run: dotnet restore ${{ env.PROJECT_NAME }} -r linux-x64
 
